@@ -1,6 +1,6 @@
 {
   "name": "@flashp-dev/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "flashp-dev utils",
   "author": "brandy <yfbrandy@itcom888.com>",
   "homepage": "",
@@ -15,5 +15,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  }
+  },
+  "gitHead": "5d015c691400ecc3f9593b2685194852ade8b957"
 }
