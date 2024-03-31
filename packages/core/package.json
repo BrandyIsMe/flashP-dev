@@ -7,7 +7,7 @@
   "license": "ISC",
   "main": "lib/core.js",
   "bin": {
-    "flashp-dev":"bin/index.js"
+    "flashp-dev": "bin/index.js"
   },
   "directories": {
     "lib": "lib",
