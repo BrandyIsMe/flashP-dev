@@ -1,14 +1,11 @@
 {
-  "name": "@flashp-dev/core",
+  "name": "@flashp-dev/utils",
   "version": "1.0.3",
-  "description": "flashp-dev core",
+  "description": "flashp-dev utils",
   "author": "brandy <yfbrandy@itcom888.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "lib/core.js",
-  "bin": {
-    "flashp-dev": "bin/index.js"
-  },
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
