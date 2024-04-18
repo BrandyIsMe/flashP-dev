@@ -1,7 +1,7 @@
 {
-  "name": "@flashp-dev/init",
+  "name": "@flashp-dev/request",
   "version": "1.0.3",
-  "description": "flashp-dev init",
+  "description": "> TODO: description",
   "author": "brandy <yfbrandy@itcom888.com>",
   "homepage": "https://github.com/BrandyIsMe/flashP-dev#readme",
   "license": "ISC",
@@ -23,21 +23,10 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "dependencies": {
-    "@flashp-dev/command": "file:../../models/command",
-    "@flashp-dev/log": "file:../../utils/log",
-    "@flashp-dev/package": "file:../../models/package",
-    "@flashp-dev/request": "file:../../utils/request",
-    "@flashp-dev/utils": "file:../../utils/utils",
-    "ejs": "^3.1.10",
-    "fs-extra": "^6.0.1",
-    "glob": "^6.0.4",
-    "inquirer": "^5.2.0",
-    "kebab-case": "^1.0.2",
-    "semver": "^7.6.0",
-    "user-home": "^3.0.0"
-  },
   "bugs": {
     "url": "https://github.com/BrandyIsMe/flashP-dev/issues"
+  },
+  "dependencies": {
+    "axios": "^1.6.8"
   }
 }

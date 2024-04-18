@@ -6,7 +6,8 @@ const fse = require('fs-extra')
 const pathExists = require('path-exists').sync
 const { isObject } = require('@flashp-dev/utils')
 const formatPath = require('@flashp-dev/format-path')
-const { getDefaultRegistry, getNpmLatestVersion } = require('@flashp-dev/get-npm-info')
+const { getDefaultRegistry, getNpmLatestVersion } = require('@flashp-dev/get-npm-info');
+const { log } = require('../../../utils/log/lib');
 class Package {
     constructor(options) {
 
@@ -59,8 +60,8 @@ class Package {
     //更新package
     async update() {
         await this.prepare()
-        const lastestPackageVersion = getNpmLatestVersion(this.packageName)
-        const latestFilePath = this.getSpecificCacheFilePath(this.packageVersion)
+        const lastestPackageVersion = await getNpmLatestVersion(this.packageName)
+        const latestFilePath = this.getSpecificCacheFilePath(lastestPackageVersion)
        if (!pathExists(latestFilePath)) {
         await npminstall({
             root: this.targetPath,
@@ -73,8 +74,8 @@ class Package {
                 }
             ]
         })
-        this.packageVersion = lastestPackageVersion
        }
+       this.packageVersion = lastestPackageVersion
     }
 
     getRootFilePath() {
@@ -97,12 +98,21 @@ class Package {
     }
 
     // .store/@imooc-cli+init@1.0.1/node_modules/@imooc-cli/init
+    //.store/flashp-dev-template-vue3@1.0.0/node_modules/flashp-dev-template-vue3
     get cacaheFilePath() {
-        return path.resolve(this.storeDir, `.store/${this.packageName.split('/').shift()}+${this.packageName.split('/').pop()}@${this.packageVersion}/node_modules/${this.packageName}`)
+        if (this.packageName.indexOf('/') !== -1) {
+            return path.resolve(this.storeDir, `.store/${this.packageName.split('/').shift()}+${this.packageName.split('/').pop()}@${this.packageVersion}/node_modules/${this.packageName}`)
+        }else{
+            return path.resolve(this.storeDir, `.store/${this.packageName}@${this.packageVersion}/node_modules/${this.packageName}`)
+        }
     }
 
     getSpecificCacheFilePath(packageVersion) {
-     return path.resolve(this.storeDir, `.store/${this.packageName.split('/').shift()}+${this.packageName.split('/').pop()}@${packageVersion}/node_modules/${this.packageName}`)
+     if (packageVersion.indexOf('/') !== -1) {
+        return path.resolve(this.storeDir, `.store/${this.packageName.split('/').shift()}+${this.packageName.split('/').pop()}@${packageVersion}/node_modules/${this.packageName}`)
+     }else{
+        return path.resolve(this.storeDir, `.store/${this.packageName.split('/').shift()}@${packageVersion}/node_modules/${this.packageName}`)
+     }
     }
 }
 
