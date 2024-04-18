@@ -31,7 +31,7 @@ class Package {
             this.packageVersion = await getNpmLatestVersion(this.packageName)
         }
     }
-    //判断当前package 是否存在
+    //判断当前package 是否存在??
     async exists(){
         if (this.storeDir) {
             await this.prepare()
